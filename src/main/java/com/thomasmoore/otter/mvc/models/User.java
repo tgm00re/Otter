@@ -5,7 +5,6 @@ import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -49,14 +48,12 @@ public class User {
 	@Transient
 	private String confirmPassword;
 	
-	//n:m Might need to use a one to many and many to one? 
-	
-	
+
 	//1:n
 	@OneToMany(mappedBy="user")
 	private List<Post> posts;
 	
-	
+
 	
 	@Column(updatable = false)
 	@DateTimeFormat(pattern="yyyy-MM-dd")
@@ -73,6 +70,111 @@ public class User {
 	@PreUpdate
 	protected void onUpdate() {
 		this.updated_at = new Date();
+	}
+	
+	public User() {}
+
+	public User(
+			@NotBlank(message = "First name is required") @Size(min = 2, max = 49, message = "First name must be between 2 and 49 characters ") String firstName,
+			@NotBlank(message = "Last name is required") @Size(min = 2, max = 49, message = "Last name must be between 2 and 49 characters ") String lastName,
+			@NotBlank(message = "Email is required") @Email(message = "Please enter a valid email address") String email,
+			@NotBlank(message = "Password is required") @Size(min = 6, max = 99, message = "Password must be between 6 and 99 characters") String password,
+			String confirmPassword, List<Post> posts) {
+		super();
+		this.firstName = firstName;
+		this.lastName = lastName;
+		this.email = email;
+		this.password = password;
+		this.confirmPassword = confirmPassword;
+		this.posts = posts;
+	}
+
+	public User(Long id,
+			@NotBlank(message = "First name is required") @Size(min = 2, max = 49, message = "First name must be between 2 and 49 characters ") String firstName,
+			@NotBlank(message = "Last name is required") @Size(min = 2, max = 49, message = "Last name must be between 2 and 49 characters ") String lastName,
+			@NotBlank(message = "Email is required") @Email(message = "Please enter a valid email address") String email,
+			@NotBlank(message = "Password is required") @Size(min = 6, max = 99, message = "Password must be between 6 and 99 characters") String password,
+			String confirmPassword, List<Post> posts) {
+		super();
+		this.id = id;
+		this.firstName = firstName;
+		this.lastName = lastName;
+		this.email = email;
+		this.password = password;
+		this.confirmPassword = confirmPassword;
+		this.posts = posts;
+	}
+
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
+	}
+
+	public String getFirstName() {
+		return firstName;
+	}
+
+	public void setFirstName(String firstName) {
+		this.firstName = firstName;
+	}
+
+	public String getLastName() {
+		return lastName;
+	}
+
+	public void setLastName(String lastName) {
+		this.lastName = lastName;
+	}
+
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
+	public String getPassword() {
+		return password;
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
+	}
+
+	public String getConfirmPassword() {
+		return confirmPassword;
+	}
+
+	public void setConfirmPassword(String confirmPassword) {
+		this.confirmPassword = confirmPassword;
+	}
+
+	public List<Post> getPosts() {
+		return posts;
+	}
+
+	public void setPosts(List<Post> posts) {
+		this.posts = posts;
+	}
+
+	public Date getCreated_at() {
+		return created_at;
+	}
+
+	public void setCreated_at(Date created_at) {
+		this.created_at = created_at;
+	}
+
+	public Date getUpdated_at() {
+		return updated_at;
+	}
+
+	public void setUpdated_at(Date updated_at) {
+		this.updated_at = updated_at;
 	}
 	
 	

@@ -5,9 +5,9 @@ import java.util.List;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
-import com.thomasmoore.otter.mvc.models.Post;
+import com.thomasmoore.otter.mvc.models.Friendship;
 
 @Repository
-public interface PostRepository extends CrudRepository<Post, Long> {
-	List<Post> findAll();
+public interface FriendshipRepository extends CrudRepository<Friendship, Long>{
+	List<Friendship> findAll();
 }

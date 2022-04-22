@@ -2,39 +2,35 @@ package com.thomasmoore.otter.mvc.models;
 
 import java.util.Date;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 import javax.persistence.PrePersist;
 import javax.persistence.PreUpdate;
 import javax.persistence.Table;
-import javax.validation.constraints.NotBlank;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
 @Entity
-@Table(name="posts")
-public class Post {
+@Table(name="friends")
+public class Friendship {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	
-	@NotBlank(message="Title is required")
-	private String title;
+	@OneToOne(cascade = CascadeType.ALL)
+	@JoinColumn(name="first_user_id", referencedColumnName="id")
+	private User firstUser;
 	
-	@NotBlank(message="Message is required")
-	private String message;
-	
-	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name="user_id")
-	private User user;
-	
+	@OneToOne(cascade = CascadeType.ALL)
+	@JoinColumn(name="second_user_id", referencedColumnName="id")
+	private User secondUser;
 	
 	@Column(updatable = false)
 	@DateTimeFormat(pattern="yyyy-MM-dd")
@@ -54,24 +50,7 @@ public class Post {
 	}
 	
 	
-	public Post() {}
-
-	public Post(@NotBlank(message = "Title is required") String title,
-			@NotBlank(message = "Message is required") String message, User user) {
-		super();
-		this.title = title;
-		this.message = message;
-		this.user = user;
-	}
-
-	public Post(Long id, @NotBlank(message = "Title is required") String title,
-			@NotBlank(message = "Message is required") String message, User user) {
-		super();
-		this.id = id;
-		this.title = title;
-		this.message = message;
-		this.user = user;
-	}
+	public Friendship() {}
 
 	public Long getId() {
 		return id;
@@ -81,28 +60,20 @@ public class Post {
 		this.id = id;
 	}
 
-	public String getTitle() {
-		return title;
+	public User getFirstUser() {
+		return firstUser;
 	}
 
-	public void setTitle(String title) {
-		this.title = title;
+	public void setFirstUser(User firstUser) {
+		this.firstUser = firstUser;
 	}
 
-	public String getMessage() {
-		return message;
+	public User getSecondUser() {
+		return secondUser;
 	}
 
-	public void setMessage(String message) {
-		this.message = message;
-	}
-
-	public User getUser() {
-		return user;
-	}
-
-	public void setUser(User user) {
-		this.user = user;
+	public void setSecondUser(User secondUser) {
+		this.secondUser = secondUser;
 	}
 
 	public Date getCreated_at() {
@@ -120,7 +91,6 @@ public class Post {
 	public void setUpdated_at(Date updated_at) {
 		this.updated_at = updated_at;
 	}
-	
 	
 	
 	
