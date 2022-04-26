@@ -2,7 +2,13 @@ package com.thomasmoore.otter.mvc.controllers;
 
 import java.util.List;
 
+import javax.validation.Valid;
+
+import org.mindrot.jbcrypt.BCrypt;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
+import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -11,9 +17,11 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.thomasmoore.otter.mvc.models.LoginUser;
 import com.thomasmoore.otter.mvc.models.User;
 import com.thomasmoore.otter.mvc.services.UserService;
 
+@CrossOrigin
 @RestController
 public class UserController {
 	
@@ -23,8 +31,9 @@ public class UserController {
 	//================== Create ==================
 	
 	@PostMapping("/api/users/create")
-	public User createUser(@RequestBody User user) {
-		return userServ.create(user);
+	public ResponseEntity<User> createUser(@Valid @RequestBody User user) {
+		user.setPassword(BCrypt.hashpw(user.getPassword(), BCrypt.gensalt()));
+		return ResponseEntity.ok(userServ.create(user));
 	}
 	
 	//================== Read ==================
@@ -48,5 +57,16 @@ public class UserController {
 	@DeleteMapping("/api/users/delete/{id}")
 	public void deleteUser(@PathVariable("id") Long id) {
 		userServ.delete(id);
+	}
+	
+	//================== Login ==================
+	@PostMapping("/api/users/login")
+	public Object loginUser(@Valid @RequestBody LoginUser loginUser, BindingResult result) {
+		System.out.println("HELLO!");
+		User user = userServ.login(loginUser, result);
+		if(result.hasErrors()) {
+			return result.getAllErrors();
+		}
+		return user;
 	}
 }
