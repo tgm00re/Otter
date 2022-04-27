@@ -20,6 +20,9 @@ import javax.validation.constraints.Size;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
+
 @Entity
 @Table(name="users")
 public class User {
@@ -38,6 +41,7 @@ public class User {
 	@Size(min=2, max=49, message="Last name must be between 2 and 49 characters ")
 	private String lastName;
 	
+	@Column(unique = true)
 	@NotBlank(message="Email is required")
 	@Email(message="Please enter a valid email address")
 	@Pattern(regexp="^(?=.{1,64}@)[A-Za-z0-9_-]+(\\.[A-Za-z0-9_-]+)*@" 
@@ -53,6 +57,7 @@ public class User {
 	
 
 	//1:n
+	@JsonManagedReference
 	@OneToMany(mappedBy="user")
 	private List<Post> posts;
 	

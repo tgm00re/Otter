@@ -25,6 +25,7 @@ public class UserService {
 	
 	//READ
 	public List<User> findAll(){
+		System.out.println("Running findAll");
 		return userRepo.findAll();
 	}
 	

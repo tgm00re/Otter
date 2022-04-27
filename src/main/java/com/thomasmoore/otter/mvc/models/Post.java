@@ -17,6 +17,8 @@ import javax.validation.constraints.NotBlank;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 @Entity
 @Table(name="posts")
 public class Post {
@@ -25,12 +27,11 @@ public class Post {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	
-	@NotBlank(message="Title is required")
-	private String title;
 	
 	@NotBlank(message="Message is required")
 	private String message;
 	
+	@JsonBackReference
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name="user_id")
 	private User user;
@@ -56,19 +57,15 @@ public class Post {
 	
 	public Post() {}
 
-	public Post(@NotBlank(message = "Title is required") String title,
-			@NotBlank(message = "Message is required") String message, User user) {
+	public Post(@NotBlank(message = "Message is required") String message, User user) {
 		super();
-		this.title = title;
 		this.message = message;
 		this.user = user;
 	}
 
-	public Post(Long id, @NotBlank(message = "Title is required") String title,
-			@NotBlank(message = "Message is required") String message, User user) {
+	public Post(Long id, @NotBlank(message = "Message is required") String message, User user) {
 		super();
 		this.id = id;
-		this.title = title;
 		this.message = message;
 		this.user = user;
 	}
@@ -79,14 +76,6 @@ public class Post {
 
 	public void setId(Long id) {
 		this.id = id;
-	}
-
-	public String getTitle() {
-		return title;
-	}
-
-	public void setTitle(String title) {
-		this.title = title;
 	}
 
 	public String getMessage() {

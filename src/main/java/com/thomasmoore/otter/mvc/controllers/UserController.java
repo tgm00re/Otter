@@ -33,6 +33,10 @@ public class UserController {
 	@PostMapping("/api/users/create")
 	public ResponseEntity<User> createUser(@Valid @RequestBody User user) {
 		user.setPassword(BCrypt.hashpw(user.getPassword(), BCrypt.gensalt()));
+//		if(result.hasErrors()) {
+//			System.out.println("There were errors");
+//			return ResponseEntity.ok(userServ.create(user));
+//		}
 		return ResponseEntity.ok(userServ.create(user));
 	}
 	
