@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.thomasmoore.otter.mvc.dtos.UserDTO;
 import com.thomasmoore.otter.mvc.models.LoginUser;
 import com.thomasmoore.otter.mvc.models.User;
 import com.thomasmoore.otter.mvc.services.UserService;
@@ -42,7 +43,7 @@ public class UserController {
 	
 	//================== Read ==================
 	@GetMapping("/api/users")
-	public List<User> allUsers(){
+	public List<UserDTO> allUsers(){
 		return userServ.findAll();
 	}
 	

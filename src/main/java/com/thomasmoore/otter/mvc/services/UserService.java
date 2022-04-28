@@ -2,12 +2,14 @@ package com.thomasmoore.otter.mvc.services;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 import org.mindrot.jbcrypt.BCrypt;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.validation.BindingResult;
 
+import com.thomasmoore.otter.mvc.dtos.UserDTO;
 import com.thomasmoore.otter.mvc.models.LoginUser;
 import com.thomasmoore.otter.mvc.models.User;
 import com.thomasmoore.otter.mvc.repositories.UserRepository;
@@ -24,9 +26,11 @@ public class UserService {
 	}
 	
 	//READ
-	public List<User> findAll(){
-		System.out.println("Running findAll");
-		return userRepo.findAll();
+	public List<UserDTO> findAll(){
+		return userRepo.findAll()
+				.stream()
+				.map(this::convertEntityToDto)
+				.collect(Collectors.toList());
 	}
 	
 	public User findOneById(Long id) {
@@ -59,6 +63,15 @@ public class UserService {
 			return null;
 		}
 		return potentialUser;
+	}
+	
+	//DTO
+	public UserDTO convertEntityToDto(User user) {
+		UserDTO userDto = new UserDTO();
+		userDto.setFirstName(user.getFirstName());
+		userDto.setLastName(user.getLastName());
+		userDto.setUserId(user.getId());
+		return userDto;
 	}
 	
 	
