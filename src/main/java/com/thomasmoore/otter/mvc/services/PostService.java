@@ -2,10 +2,12 @@ package com.thomasmoore.otter.mvc.services;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.thomasmoore.otter.mvc.dtos.PostDTO;
 import com.thomasmoore.otter.mvc.models.Post;
 import com.thomasmoore.otter.mvc.repositories.PostRepository;
 
@@ -15,13 +17,16 @@ public class PostService {
 	private PostRepository postRepo;
 	
 	//CREATE
-	public Post create(Post post) {
-		return postRepo.save(post);
+	public PostDTO create(Post post) {
+		return this.convertEntityToDto(postRepo.save(post));
 	}
 	
 	//READ
-	public List<Post> findAll(){
-		return postRepo.findAll();
+	public List<PostDTO> findAll(){
+		return postRepo.findAll()
+				.stream()
+				.map(this::convertEntityToDto)
+				.collect(Collectors.toList());
 	}
 	
 	public Post findOneById(Long id) {
@@ -41,5 +46,16 @@ public class PostService {
 	//DELETE
 	public void deleteById(Long id) {
 		postRepo.deleteById(id);
+	}
+	
+	//DTO
+	public PostDTO convertEntityToDto(Post post) {
+		PostDTO postDTO = new PostDTO();
+		postDTO.setPostId(post.getId());
+		postDTO.setMessage(post.getMessage());
+		postDTO.setUserId(post.getUser().getId());
+		postDTO.setFirstName(post.getUser().getFirstName());
+		postDTO.setLastName(post.getUser().getLastName());
+		return postDTO;
 	}
 }

@@ -18,6 +18,7 @@ import javax.validation.constraints.NotBlank;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @Entity
 @Table(name="posts")
@@ -34,6 +35,7 @@ public class Post {
 	@JsonBackReference
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name="user_id")
+	@JsonIgnoreProperties("postss")
 	private User user;
 	
 	
