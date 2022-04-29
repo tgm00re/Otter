@@ -10,4 +10,10 @@ import com.thomasmoore.otter.mvc.models.Friendship;
 @Repository
 public interface FriendshipRepository extends CrudRepository<Friendship, Long>{
 	List<Friendship> findAll();
+	
+	List<Friendship> findByFirstUserId(Long id);
+	
+	List<Friendship> findBySecondUserId(Long id);
+	
+	void deleteByFirstUserIdAndSecondUserId(long firstUserId, Long secondUserId);
 }

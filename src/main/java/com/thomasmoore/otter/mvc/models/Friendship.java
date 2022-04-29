@@ -24,11 +24,11 @@ public class Friendship {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	
-	@OneToOne(cascade = CascadeType.ALL)
+	@OneToOne
 	@JoinColumn(name="first_user_id", referencedColumnName="id")
 	private User firstUser;
 	
-	@OneToOne(cascade = CascadeType.ALL)
+	@OneToOne
 	@JoinColumn(name="second_user_id", referencedColumnName="id")
 	private User secondUser;
 	
@@ -51,6 +51,11 @@ public class Friendship {
 	
 	
 	public Friendship() {}
+	
+//	public Friendship(User firstUser, User secondUser) {
+//		this.firstUser = firstUser;
+//		this.secondUser = secondUser;
+//	}
 
 	public Long getId() {
 		return id;
