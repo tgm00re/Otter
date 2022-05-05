@@ -31,6 +31,7 @@ public class PostController {
 	//================== Create ==================
 	@PostMapping("/api/posts/create")
 	public ResponseEntity<PostDTO> createPost(@RequestBody Post post) {
+		System.out.println("Creatin' a post...");
 		return ResponseEntity.ok(postServ.create(post));
 	}
 	

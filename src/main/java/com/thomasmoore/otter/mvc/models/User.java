@@ -22,8 +22,6 @@ import javax.validation.constraints.Size;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
-import com.fasterxml.jackson.annotation.JsonManagedReference;
-
 
 @Entity
 @Table(name="users")
@@ -54,6 +52,8 @@ public class User {
 	@Size(min=6, max = 99, message="Password must be between 6 and 99 characters")
 	private String password;
 	
+	private short userLevel; //1: standard user, 2: administrator
+	
 	@Transient
 	private String confirmPassword;
 	
@@ -75,12 +75,14 @@ public class User {
 	@PrePersist
 	protected void onCreate() {
 		this.created_at = new Date();
+		this.userLevel = 1;
 	}
 	
 	@PreUpdate
 	protected void onUpdate() {
 		this.updated_at = new Date();
 	}
+	
 	
 	public User() {}
 
@@ -186,6 +188,16 @@ public class User {
 	public void setUpdated_at(Date updated_at) {
 		this.updated_at = updated_at;
 	}
+
+	public short getUserLevel() {
+		return userLevel;
+	}
+
+	public void setUserLevel(short userLevel) {
+		this.userLevel = userLevel;
+	}
+	
+	
 	
 	
 }
