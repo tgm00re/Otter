@@ -46,7 +46,7 @@ public class UserController {
 	}
 	
 	@GetMapping("/api/users/{id}")
-	public User userById(@PathVariable("id") Long id) {
+	public UserDTO userById(@PathVariable("id") Long id) {
 		return userServ.findOneById(id);
 	}
 	

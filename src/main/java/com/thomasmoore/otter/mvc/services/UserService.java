@@ -33,7 +33,16 @@ public class UserService {
 				.collect(Collectors.toList());
 	}
 	
-	public User findOneById(Long id) {
+	public UserDTO findOneById(Long id) {
+		Optional<User> optUser = userRepo.findById(id);
+		if(optUser.isPresent()) {
+			return this.convertEntityToDto(optUser.get());
+		}
+		return null;
+	}
+	
+	//Used for backend data transfer only.
+	public User findOneByIdNonDto(Long id) {
 		Optional<User> optUser = userRepo.findById(id);
 		if(optUser.isPresent()) {
 			return optUser.get();
@@ -71,6 +80,9 @@ public class UserService {
 		userDto.setFirstName(user.getFirstName());
 		userDto.setLastName(user.getLastName());
 		userDto.setUserId(user.getId());
+		userDto.setUserLevel(user.getUserLevel());
+		userDto.setProfileImageUrl(user.getProfileImageUrl());
+		userDto.setBiography(user.getBiography());
 		return userDto;
 	}
 	

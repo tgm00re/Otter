@@ -30,8 +30,8 @@ public class FriendshipController {
 	
 	@PostMapping("/api/friendships/create")
 	public Friendship createFriendship(@RequestBody AddFriendship addFriendship) {
-		User firstUser = userServ.findOneById(addFriendship.getFirstUserId());
-		User secondUser = userServ.findOneById(addFriendship.getSecondUserId());
+		User firstUser = userServ.findOneByIdNonDto(addFriendship.getFirstUserId());
+		User secondUser = userServ.findOneByIdNonDto(addFriendship.getSecondUserId());
 		Friendship friendship = new Friendship();
 		friendship.setFirstUser(firstUser);
 		friendship.setSecondUser(secondUser);

@@ -5,15 +5,19 @@ public class UserDTO {
 	private String lastName;
 	private long userId;
 	private short userLevel;
+	private String profileImageUrl;
+	private String biography;
 	
 	public UserDTO() {}
 
-	public UserDTO(String firstName, String lastName, long userId, short userLevel) {
+	public UserDTO(String firstName, String lastName, long userId, short userLevel, String profileImageUrl, String biography) {
 		super();
 		this.firstName = firstName;
 		this.lastName = lastName;
 		this.userId = userId;
 		this.userLevel = userLevel;
+		this.profileImageUrl = profileImageUrl;
+		this.biography = biography;
 	}
 
 	public String getFirstName() {
@@ -47,6 +51,24 @@ public class UserDTO {
 	public void setUserLevel(short userLevel) {
 		this.userLevel = userLevel;
 	}
+
+	public String getProfileImageUrl() {
+		return profileImageUrl;
+	}
+
+	public void setProfileImageUrl(String profileImageUrl) {
+		this.profileImageUrl = profileImageUrl;
+	}
+
+	public String getBiography() {
+		return biography;
+	}
+
+	public void setBiography(String biography) {
+		this.biography = biography;
+	}
+	
+	
 	
 	
 	
