@@ -83,6 +83,7 @@ public class UserService {
 		userDto.setUserLevel(user.getUserLevel());
 		userDto.setProfileImageUrl(user.getProfileImageUrl());
 		userDto.setBiography(user.getBiography());
+		userDto.setEmail(user.getEmail());
 		return userDto;
 	}
 	
