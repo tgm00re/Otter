@@ -1,5 +1,6 @@
 package com.thomasmoore.otter.mvc.controllers;
 
+import java.util.HashMap;
 import java.util.List;
 
 import javax.validation.Valid;
@@ -17,6 +18,7 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.thomasmoore.otter.mvc.dtos.EditAccountInformation;
 import com.thomasmoore.otter.mvc.dtos.UserDTO;
 import com.thomasmoore.otter.mvc.models.LoginUser;
 import com.thomasmoore.otter.mvc.models.User;
@@ -52,8 +54,17 @@ public class UserController {
 	
 	//================== Update ==================
 	@PutMapping("/api/users/update")
-	public User updateUser(@RequestBody User user) {
-		return userServ.update(user);
+	public Object updateUser(@Valid @RequestBody EditAccountInformation updateInfo, BindingResult result) {
+		HashMap<String, String> errors = userServ.validateEditAccountInformation(updateInfo);
+		if(errors.size() > 0) {
+			return errors;
+		}
+		User userToUpdate = userServ.findOneByIdNonDto(updateInfo.getId());
+		userToUpdate.setFirstName(updateInfo.getFirstName());
+		userToUpdate.setLastName(updateInfo.getLastName());
+		userToUpdate.setProfileImageUrl(updateInfo.getProfileImageUrl());
+		userToUpdate.setBiography(updateInfo.getBiography());
+		return ResponseEntity.ok(userServ.update(userToUpdate));
 	}
 	
 	//================== Delete ==================

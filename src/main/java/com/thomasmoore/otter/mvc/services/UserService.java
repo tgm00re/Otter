@@ -1,5 +1,6 @@
 package com.thomasmoore.otter.mvc.services;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
@@ -9,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.validation.BindingResult;
 
+import com.thomasmoore.otter.mvc.dtos.EditAccountInformation;
 import com.thomasmoore.otter.mvc.dtos.UserDTO;
 import com.thomasmoore.otter.mvc.models.LoginUser;
 import com.thomasmoore.otter.mvc.models.User;
@@ -53,6 +55,18 @@ public class UserService {
 	//UPDATE
 	public User update(User user) {
 		return userRepo.save(user);
+	}
+	
+	public HashMap<String, String> validateEditAccountInformation(EditAccountInformation editAcc){
+		HashMap<String, String> errors = new HashMap<String, String>();
+		if(editAcc.getFirstName().length() < 2) {
+			errors.put("firstName", "First name must be 2 or more characters");
+		}
+		if(editAcc.getLastName().length() < 2) {
+			errors.put("lastName", "Last name must be 2 or more characters");
+		}
+		return errors;
+		
 	}
 		
 	//DELETE
