@@ -15,7 +15,9 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.thomasmoore.otter.mvc.dtos.PostDTO;
 import com.thomasmoore.otter.mvc.models.Post;
+import com.thomasmoore.otter.mvc.models.User;
 import com.thomasmoore.otter.mvc.services.PostService;
+import com.thomasmoore.otter.mvc.services.UserService;
 
 
 @CrossOrigin
@@ -25,13 +27,15 @@ public class PostController {
 	@Autowired
 	private PostService postServ;
 	
-//	@Autowired
-//	private UserService userServ;
+	
+	@Autowired
+	private UserService userServ;
 	
 	//================== Create ==================
-	@PostMapping("/api/posts/create")
-	public ResponseEntity<PostDTO> createPost(@RequestBody Post post) {
-		System.out.println("Creatin' a post...");
+	@PostMapping("/api/posts/create/{userId}")
+	public ResponseEntity<PostDTO> createPost(@RequestBody Post post, @PathVariable("userId") Long userId) {
+		User loggedInUser = userServ.findOneByIdNonDto(userId);
+		post.setUser(loggedInUser);
 		return ResponseEntity.ok(postServ.create(post));
 	}
 	
