@@ -53,8 +53,8 @@ public class UserService {
 	}
 		
 	//UPDATE
-	public User update(User user) {
-		return userRepo.save(user);
+	public UserDTO update(User user) {
+		return this.convertEntityToDto(userRepo.save(user));
 	}
 	
 	public HashMap<String, String> validateEditAccountInformation(EditAccountInformation editAcc){

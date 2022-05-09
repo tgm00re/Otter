@@ -1,0 +1,374 @@
+@font-face {
+  font-family: 'helvetica';
+  src: url('./Static/Fonts/Helvetica-Neue-Font/HelveticaNeue\ W0166MediumIt/HelveticaNeueW0166MediumIt.otf');
+}
+
+
+*{
+  background: black;
+  color: #F5F8FA;
+  font-weight: bold !important;
+}
+
+.App {
+  text-align: center;
+  height: 100vh;
+}
+
+
+#first-row{
+  min-height: 900px !important;
+}
+
+#register-container{
+  overflow-x: hidden;
+  height: 100vh !important;
+  font-family: 'Roboto', sans-serif;
+}
+
+#register-container > #first-row{
+  height: 100%;
+}
+
+#register-container > #first-row > .col-md-7{
+  height: 95%;
+}
+
+#first-row-right-col{
+  height: 100% !important;
+}
+
+
+#register-bg-img{
+  height: 100%;
+  width: 100%;
+  min-height: 590px;
+}
+
+@media screen and (max-height: 720px){
+  #register-container > #first-row > .col-md-7{
+    height: 100% !important;
+  }
+}
+
+
+.right-col{
+  height: fit-content !important;
+}
+
+
+#login-icon{
+  width: 100px;
+  height: 100px;
+  object-fit: contain;
+  object-position: center;
+}
+
+#register-header{
+  color: rgba(245, 248, 250, 0.95);
+  font-size: 4rem;
+}
+
+.register-page-button{
+  width:300px !important;
+  height: 40px !important;
+  display: flex !important;
+  justify-content: center !important;
+  align-items: center !important;
+  font-size: .9rem !important;
+}
+
+.register-page-button-google{
+  color: rgba(60, 64, 67, 0.8) !important;
+
+}
+
+#google-icon{
+  width: 20px !important;
+  height: 20px !important;
+  background-color: transparent;
+  margin-right: 5px;
+}
+
+
+#apple-icon-span{
+  background: transparent;
+}
+#apple-icon{
+  background-color: transparent;
+  color: black !important;
+  width: 20px;
+  height: 20px;
+  margin-right: 5px;
+}
+
+.hr-with-text{
+  display: f;
+}
+
+/* Via MatTheCat StackOverflow */
+.separator {
+  display: flex;
+  align-items: center;
+  text-align: center;
+  width: 300px !important;
+  color:rgba(245, 248, 250, 0.8);
+  font-size: .9rem;
+}
+
+.separator::before,
+.separator::after {
+  content: '';
+  flex: 1;
+  border-bottom: 1px solid rgba(245, 248, 250, 0.8);
+}
+
+.separator:not(:empty)::before {
+  margin-right: .25em;
+}
+
+.separator:not(:empty)::after {
+  margin-left: .25em;
+}
+
+/* end of MatTheCat code */
+
+.register-page-button-email{
+  background-color: rgb(29, 155, 240) !important;
+  color: rgb(245, 248, 250) !important;
+}
+
+#signup-modal{
+  background-color: rgba(60, 64, 67, .1) !important;
+  padding-top: 0 !important;
+}
+
+.modal-content{
+  background-color: black !important;
+}
+
+.modal-header{
+  display: flex;
+  justify-content: space-between;
+  height: fit-content !important;
+}
+
+.modal-footer, .modal-header{
+  border: none !important;
+}
+
+.modal-header > button{
+  border: none;
+  font-size: 2.5rem;
+}
+
+.modal-header > #login-icon{
+  width: 50px;
+  height: 75px;
+  position: relative;
+  right: 30px;
+}
+
+.modal-title{
+  margin-top: 0;
+}
+
+.signup-input{
+  background-color: transparent !important;
+  border: 1px solid rgba(60, 64, 67, .9) !important;
+  padding: 15px !important;
+  color: rgb(245, 248, 250) !important;
+}
+
+.signup-input:focus, .register-page-button-signin:focus{
+  border: 1px solid rgb(29, 155, 240) !important;
+}
+
+#signup-submit-button{
+  height: 60px !important;
+  font-size: large !important;
+  font-weight: bold;
+  background-color: rgb(29, 155, 240) !important;
+  border: none;
+  color: rgb(245, 248, 250);
+}
+
+#sign-up-agreement{
+  width: 300px;
+  font-size: .6rem;
+  color: rgba(60, 64, 67, .95) !important;
+}
+
+#sign-up-agreement > a{
+  color:rgb(29, 155, 240);
+  text-decoration: none;
+}
+
+/* Change placeholder text */
+input::-webkit-input-placeholder {
+  font-weight: bold;
+  color: #999;
+}
+input:focus::-webkit-input-placeholder {
+  color: rgb(29, 155, 240);
+}
+
+/* Firefox < 19 */
+input:-moz-placeholder {
+  color: #999;
+}
+input:focus:-moz-placeholder {
+  color: rgb(29, 155, 240);
+}
+
+/* Firefox > 19 */
+input::-moz-placeholder {
+  color: #999;
+}
+input:focus::-moz-placeholder {
+  color: rgb(29, 155, 240);
+}
+
+/* Internet Explorer 10 */
+#input:-ms-input-placeholder {
+  color: #999;
+}
+input:focus:-ms-input-placeholder {
+  color: rgb(29, 155, 240);
+}
+/* ---- -- --  -- -- --  --  */
+
+.register-page-button-signin{
+  border: 1px solid rgba(245, 248, 250, 0.75) !important;
+  color: rgb(29, 155, 240) !important; 
+}
+
+#second-row{
+  height: fit-content !important;
+  background-color: green !important;
+}
+
+#info-list{
+  height:fit-content;
+}
+
+#info-list, #info-list > a{
+  color: rgb(60, 64, 67) !important;
+  text-decoration: none;
+}
+
+#signin-button-container{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+
+
+
+/* Dashboard */
+#dashboard-col-left{
+  text-align: left;
+}
+
+
+#dashboard-icon{
+  width: 75px;
+}
+
+#tweet-submit, #open-tweet-form{
+  font-weight: bold;
+  background-color: rgb(29, 155, 240) !important;
+}
+
+#open-tweet-form{
+  width: 250px;
+  font-weight: bold;
+}
+
+/* TweetForm */
+
+#tweet-form{
+  border-bottom: 1px solid white;
+}
+
+.profile-img-container{
+  border-radius: 50%;
+}
+
+.profile-img{
+  width: 50px !important;
+  height: 50px !important;
+  border-radius: 50%;
+  object-position: center;
+}
+
+.profile-img-edit{
+  width: 100px !important;
+  height: 100px !important;
+  border-radius: 50%;
+  object-position: center;
+}
+
+#tweet-form-input{
+  border: none !important;
+  font-size: 1.5rem;
+  max-height: 400px;
+  resize: none; 
+  overflow-wrap: break-word;
+  outline: none !important;
+}
+
+#tweet-submit{
+  width: 125px;
+  font-weight: bold;
+}
+
+/* PostDisplay */
+
+#post-list{
+  list-style: none;
+  text-align: start !important;
+  padding: 0;
+}
+
+.post{
+  text-align: start !important;
+}
+
+#home-right-search{
+  font-weight: bold;
+}
+
+#home-right-search:focus{
+  border: 1px solid rgb(29, 155, 240) !important;
+  box-shadow: none;
+  color: rgb(245, 248, 250);
+}
+
+#whats-happening-item > ul{
+  background-color: transparent !important;
+}
+
+.post-img{
+  width: 504px;
+  border-radius: 25px;
+}
+
+
+#comment-btn-container{
+  position: relative;
+}
+/* Heart icon  */
+.go2484888251, .go4268192979, #comment-btn{
+  float: left;
+  top: -25px !important;
+}
+
+
+
+/* Generic */
+.bold-font{
+  font-weight: bold;
+}

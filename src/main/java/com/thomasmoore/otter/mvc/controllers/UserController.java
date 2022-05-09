@@ -81,6 +81,6 @@ public class UserController {
 		if(result.hasErrors()) {
 			return result.getAllErrors();
 		}
-		return user;
+		return userServ.convertEntityToDto(user);
 	}
 }
