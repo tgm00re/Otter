@@ -15,6 +15,9 @@
   height: 100vh;
 }
 
+#main-container{
+  max-width: 1400px;
+}
 
 #first-row{
   min-height: 900px !important;
@@ -304,6 +307,12 @@ input:focus:-ms-input-placeholder {
   object-position: center;
 }
 
+.profile-img:hover{
+  cursor:pointer;
+  opacity: 90%;
+}
+
+
 .profile-img-edit{
   width: 100px !important;
   height: 100px !important;
@@ -353,7 +362,7 @@ input:focus:-ms-input-placeholder {
 
 .post-img{
   width: 504px;
-  border-radius: 25px;
+  border-radius: 25px; 
 }
 
 
@@ -364,6 +373,19 @@ input:focus:-ms-input-placeholder {
 .go2484888251, .go4268192979, #comment-btn{
   float: left;
   top: -25px !important;
+}
+/*  */
+.follow-btn{
+  width: 200px !important;
+  height: 40px;
+}
+
+.post-acc-link-txt{
+  cursor: pointer;
+}
+
+.post-acc-link-txt:hover{
+  color: rgb(29, 155, 240);
 }
 
 

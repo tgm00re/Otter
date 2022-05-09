@@ -38,7 +38,7 @@ export default function PostDisplay(props) {
                     )
                 })}
             </ul>
-
+            <p className="text-center">&#x1F9A6;  You've reached the end of the line!	&#x1F9A6;    </p>
         </div>
     )
 }

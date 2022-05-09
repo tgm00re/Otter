@@ -71,7 +71,7 @@ export default function WhoToFollow() {
                             {!friendIds.includes(user.userId) ? (
                                 <button className="btn rounded-pill bg-light p-2" onClick={e => handleFollow(e.target.value)} value={user.userId}>Follow</button>
                                 )
-                            :   <button className="btn rounded-pill bg-light p-2" onClick={e => handleUnfollow(e.target.value)} value={user.userId}>Unfollow</button>
+                                :   <button className="btn rounded-pill bg-light p-2" onClick={e => handleUnfollow(e.target.value)} value={user.userId}>Unfollow</button>
                             }
                         </li>
                         )

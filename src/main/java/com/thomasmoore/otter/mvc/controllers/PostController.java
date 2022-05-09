@@ -55,6 +55,11 @@ public class PostController {
 		return postServ.findFriendPostDtos(userId);
 	}
 	
+	@GetMapping("/api/posts/user/{id}")//Finds all posts by a user
+	public List<PostDTO> usersPosts(@PathVariable("id") Long userId){
+		return postServ.findUserPostsById(userId);
+	}
+	
 	//================== Update ==================
 	@PutMapping("/api/posts/update")
 	public Post updatePost(@RequestBody Post post) {
