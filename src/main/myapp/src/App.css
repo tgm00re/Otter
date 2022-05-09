@@ -344,6 +344,12 @@ input:focus:-ms-input-placeholder {
 
 .post{
   text-align: start !important;
+  border-bottom: 1px solid #999;
+  cursor:pointer;
+}
+
+.post-container > h3{
+  margin-bottom: 0 !important;
 }
 
 #home-right-search{
@@ -363,6 +369,11 @@ input:focus:-ms-input-placeholder {
 .post-img{
   width: 504px;
   border-radius: 25px; 
+  border: 2px solid #999;
+}
+
+#post-img-container{
+  background-color: transparent;
 }
 
 
@@ -388,6 +399,16 @@ input:focus:-ms-input-placeholder {
   color: rgb(29, 155, 240);
 }
 
+.links-link:hover, .post-container:hover{
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+.post-container > h3, .post-container > h3 > span,
+ .post-container > .container, .post-container > .container > p, .post-container > .container > #post-action-container,
+ #comment-bubble-container, #comment-bubble-container > img
+ {
+  background-color: transparent;
+}
 
 
 /* Generic */

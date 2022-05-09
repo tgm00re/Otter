@@ -6,7 +6,6 @@ import placeholderImg from '../Static/Images/placeholder-img.png'
 
 
 
-
 export default function WhoToFollow() {
     const [users, setUsers] = useState([]);
     const [friendIds, setFriendIds] = useState([]);
@@ -59,15 +58,15 @@ export default function WhoToFollow() {
 
 
     return (
-        <div style={{backgroundColor: "rgba(60, 64, 67, 0.01)"}} className="rounded mt-5 p-1" id="who-to-follow-container">
+        <div style={{backgroundColor: "rgba(255,255,255,0.10)"}} className="rounded mt-5 p-1" id="who-to-follow-container">
             <h3 className="bg-transparent">Who to follow</h3>
             <ul className="bg-transparent px-1">
                 {users.map((user, index) => {
                     if(user.userId != sessionStorage.getItem("user_id")){
                         return(
                         <li className="d-flex justify-content-between align-items-center bg-transparent my-3" key={index}>
-                            <img src={placeholderImg} alt="" className="rounded-circle bg-transparent profile-img"/>
-                            <span className="bg-transparent">{user.firstName} {user.lastName}</span>
+                            <img src={user.profileImageUrl} alt="" className="rounded-circle bg-transparent profile-img"/>
+                            <span className="bg-transparent post-acc-link-txt">{user.firstName} {user.lastName}</span>
                             {!friendIds.includes(user.userId) ? (
                                 <button className="btn rounded-pill bg-light p-2" onClick={e => handleFollow(e.target.value)} value={user.userId}>Follow</button>
                                 )

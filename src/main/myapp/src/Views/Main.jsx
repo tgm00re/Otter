@@ -13,7 +13,6 @@ import { useHistory } from 'react-router'
 import UserDisplay from '../Components/UserDisplay'
 import ViewProfile from '../Components/ViewProfile'
 
-
 export default function Main() {
     
 
@@ -45,7 +44,7 @@ export default function Main() {
             </div>
             </div>
             <Route exact path="/">
-                <Redirect to="register"/>
+                <Redirect to="/register"/>
             </Route> 
         </Switch>
     )

@@ -2,7 +2,7 @@ import React from 'react'
 
 export default function WhatsHappening() {
     return (
-        <div style={{backgroundColor: "rgba(60, 64, 67, 0.01)"}} className="rounded mt-5 p-1" id="whats-happening-container">
+        <div style={{backgroundColor: "rgba(255,255,255,0.10)"}} className="rounded mt-5 p-1" id="whats-happening-container">
             <h3 className="bg-transparent">What's happening</h3>
             <ul className="text-start bg-transparent p-1">
                 <li className="list-unstyled font-weight-bold bg-transparent whats-happening-item">
