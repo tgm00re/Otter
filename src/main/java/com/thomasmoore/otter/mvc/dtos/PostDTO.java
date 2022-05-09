@@ -1,5 +1,7 @@
 package com.thomasmoore.otter.mvc.dtos;
 
+import java.util.Date;
+
 public class PostDTO {
 	private long postId;
 	private long userId;
@@ -8,6 +10,7 @@ public class PostDTO {
 	private String lastName;
 	private String imageUrl;
 	private String profileImageUrl;
+	private Date createdAt;
 	
 	
 	public PostDTO() {
@@ -15,7 +18,7 @@ public class PostDTO {
 	}
 
 
-	public PostDTO(long postId, long userId, String message, String firstName, String lastName, String imageUrl, String profileImageUrl) {
+	public PostDTO(long postId, long userId, String message, String firstName, String lastName, String imageUrl, String profileImageUrl, Date createdAt) {
 		super();
 		this.postId = postId;
 		this.userId = userId;
@@ -24,6 +27,7 @@ public class PostDTO {
 		this.lastName = lastName;
 		this.imageUrl = imageUrl;
 		this.profileImageUrl = profileImageUrl;
+		this.createdAt = createdAt;
 	}
 
 
@@ -94,6 +98,16 @@ public class PostDTO {
 
 	public void setProfileImageUrl(String profileImageUrl) {
 		this.profileImageUrl = profileImageUrl;
+	}
+
+
+	public Date getCreatedAt() {
+		return createdAt;
+	}
+
+
+	public void setCreatedAt(Date createdAt) {
+		this.createdAt = createdAt;
 	}
 	
 	

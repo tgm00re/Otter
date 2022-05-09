@@ -67,6 +67,9 @@ public class PostService {
 				friendPosts.add(this.convertEntityToDto(post));
 			}
 		}
+		for(Post post : userServ.findOneByIdNonDto(userId).getPosts()) {
+			friendPosts.add(this.convertEntityToDto(post));
+		}
 		return friendPosts;		
 	}
 	
@@ -91,6 +94,7 @@ public class PostService {
 		postDTO.setLastName(post.getUser().getLastName());
 		postDTO.setImageUrl(post.getImageUrl());
 		postDTO.setProfileImageUrl(post.getUser().getProfileImageUrl());
+		postDTO.setCreatedAt(post.getCreated_at());
 		return postDTO;
 	}
 }
