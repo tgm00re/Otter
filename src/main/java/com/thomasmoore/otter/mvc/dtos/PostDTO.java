@@ -6,6 +6,8 @@ public class PostDTO {
 	private String message;
 	private String firstName;
 	private String lastName;
+	private String imageUrl;
+	private String profileImageUrl;
 	
 	
 	public PostDTO() {
@@ -13,13 +15,15 @@ public class PostDTO {
 	}
 
 
-	public PostDTO(long postId, long userId, String message, String firstName, String lastName) {
+	public PostDTO(long postId, long userId, String message, String firstName, String lastName, String imageUrl, String profileImageUrl) {
 		super();
 		this.postId = postId;
 		this.userId = userId;
 		this.message = message;
 		this.firstName = firstName;
 		this.lastName = lastName;
+		this.imageUrl = imageUrl;
+		this.profileImageUrl = profileImageUrl;
 	}
 
 
@@ -70,6 +74,26 @@ public class PostDTO {
 
 	public void setLastName(String lastName) {
 		this.lastName = lastName;
+	}
+
+
+	public String getImageUrl() {
+		return imageUrl;
+	}
+
+
+	public void setImageUrl(String imageUrl) {
+		this.imageUrl = imageUrl;
+	}
+
+
+	public String getProfileImageUrl() {
+		return profileImageUrl;
+	}
+
+
+	public void setProfileImageUrl(String profileImageUrl) {
+		this.profileImageUrl = profileImageUrl;
 	}
 	
 	

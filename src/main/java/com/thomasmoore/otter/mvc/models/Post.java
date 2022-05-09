@@ -9,6 +9,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.Lob;
 import javax.persistence.ManyToOne;
 import javax.persistence.PrePersist;
 import javax.persistence.PreUpdate;
@@ -37,6 +38,10 @@ public class Post {
 	@JoinColumn(name="user_id")
 	@JsonIgnoreProperties("postss")
 	private User user;
+	
+	@Lob
+	@Column(length=8192)
+	private String imageUrl = "";
 	
 	
 	@Column(updatable = false)
@@ -70,6 +75,25 @@ public class Post {
 		this.id = id;
 		this.message = message;
 		this.user = user;
+	}
+	
+	
+
+	public Post(@NotBlank(message = "Message is required") String message, User user, String imageUrl) {
+		super();
+		this.message = message;
+		this.user = user;
+		this.imageUrl = imageUrl;
+	}
+	
+	
+
+	public Post(Long id, @NotBlank(message = "Message is required") String message, User user, String imageUrl) {
+		super();
+		this.id = id;
+		this.message = message;
+		this.user = user;
+		this.imageUrl = imageUrl;
 	}
 
 	public Long getId() {
@@ -111,8 +135,14 @@ public class Post {
 	public void setUpdated_at(Date updated_at) {
 		this.updated_at = updated_at;
 	}
-	
-	
+
+	public String getImageUrl() {
+		return imageUrl;
+	}
+
+	public void setImageUrl(String imageUrl) {
+		this.imageUrl = imageUrl;
+	}
 	
 	
 	
