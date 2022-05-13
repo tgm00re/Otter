@@ -71,9 +71,14 @@ export default function EditAccount(props) {
         setProfileImageUrl(base64);
     }
 
+    useEffect(() => {
+        console.log("hello this is edit account silly willy wee B)")
+    })
+
 
     return (
         <>
+            <h1>DELETE THIS: <p onClick={logout}>Logout</p></h1>
             <h1 className="h1 mt-1 px-1" style={{ fontSize: "40px" }}>Edit Account Information</h1>
             <form onSubmit={(e) => handleSubmit(e)} className="text-center d-flex flex-column align-items-center px-2">
 

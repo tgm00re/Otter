@@ -36,7 +36,7 @@ public class Post {
 	@JsonBackReference
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name="user_id")
-	@JsonIgnoreProperties("postss")
+	@JsonIgnoreProperties("posts")
 	private User user;
 	
 	@Lob

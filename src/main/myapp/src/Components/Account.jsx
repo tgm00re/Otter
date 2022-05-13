@@ -9,16 +9,17 @@ export default function Account() {
     const [loggedInUser, setLoggedInUser] = useState({})
 
     useEffect(() => {
-                if(!sessionStorage.getItem("loggedInUser")){
+            if(!sessionStorage.getItem("loggedInUser")){
                 history.push("/");
             } else { 
+                console.log(JSON.parse(sessionStorage.getItem("loggedInUser")).biography)
                 setLoggedInUser(JSON.parse(sessionStorage.getItem("loggedInUser")));
             }
-    })
+    }, [])
 
     return (
         <>
-            {loggedInUser.biography ? 
+            {loggedInUser.firstName ? 
             <>
             <div className="col-sm-3 vh-100 pt-1" id="dashboard-col-left">
                 <Links loggedInUser={loggedInUser}/>

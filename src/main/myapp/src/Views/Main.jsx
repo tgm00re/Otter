@@ -18,6 +18,9 @@ export default function Main() {
 
     return (
         <Switch>
+            <Route exact path="/">
+                <Redirect to="/register"/>
+            </Route> 
             <Route exact path="/register">
                 <Register/>
             </Route>
@@ -43,9 +46,6 @@ export default function Main() {
             </Route>
             </div>
             </div>
-            <Route exact path="/">
-                <Redirect to="/register"/>
-            </Route> 
         </Switch>
     )
 }
