@@ -23,7 +23,7 @@ export default function HomeMid(props) {
 
     return (
         <div className="text-start">
-            <h1>Home</h1>
+            <h1 className="ps-2">Home</h1>
             <TweetForm setPosts={setPosts} loggedInUser={props.loggedInUser} posts={posts}/>
             <PostDisplay posts={posts}/>
         </div>

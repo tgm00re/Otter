@@ -12,6 +12,7 @@ import Explore from '../Components/Explore'
 import { useHistory } from 'react-router'
 import UserDisplay from '../Components/UserDisplay'
 import ViewProfile from '../Components/ViewProfile'
+import Notifications from '../Components/Notifications'
 
 export default function Main() {
     
@@ -31,18 +32,21 @@ export default function Main() {
                 <EditAccount/>
             </Route>
             <div className="container-fluid px-5" id="main-container">
-                    <div className="row">
+                <div className="row">
             <Route exact path="/home">
-                        <Home />
+                <Home />
             </Route>
             <Route exact path="/explore">
-                        <Explore />
+                <Explore />
             </Route>
             <Route exact path="/account">
-                        <Account />
+                <Account />
+            </Route>
+            <Route exact path="/notifications">
+                <Notifications/>
             </Route>
             <Route exact path="/p/:id">
-                        <ViewProfile/>
+                <ViewProfile/>
             </Route>
             </div>
             </div>

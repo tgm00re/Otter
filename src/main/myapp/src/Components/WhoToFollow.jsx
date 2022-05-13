@@ -15,7 +15,6 @@ export default function WhoToFollow() {
             firstUserId: sessionStorage.getItem("user_id"),
             secondUserId: secondUserId
         }
-        console.log(addFriendship);
         axios.post("http://localhost:8080/api/friendships/create", addFriendship)
             .then(response => {
                 console.log(response)

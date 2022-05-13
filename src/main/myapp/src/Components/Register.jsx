@@ -38,7 +38,6 @@ export default function Register() {
         if (confirmPassError == "") {
             axios.post("http://localhost:8080/api/users/create", newUser)
                 .then(response => {
-                    console.log(response)
                     setFirstName("");
                     setLastName("");
                     setEmail("");
@@ -46,9 +45,9 @@ export default function Register() {
                     setConfirmPassword("");
                     setConfirmPassError("");
                     setErrors({});
-
+                    
                     sessionStorage.setItem("user_id", response.data.id);
-                    sessionStorage.setItem("loggedInUser", response.data);
+                    sessionStorage.setItem("loggedInUser", JSON.stringify(response.data));
                     
                     window.location.replace("/home");
                 })

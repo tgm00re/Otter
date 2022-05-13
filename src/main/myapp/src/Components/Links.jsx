@@ -1,13 +1,30 @@
-import React from 'react'
+import axios from 'axios';
+import React, { useEffect, useState } from 'react'
 import { useHistory } from 'react-router'
 import icon from '../Static/Images/otter-icon.png'
 
 export default function Links(props) {
+    const [hasNotif, setHasNotif] = useState(false);
     let history = useHistory();
 
     function reroute(str){
         history.push("/" + str);
     }
+
+    useEffect(() => {
+        console.log("Running");
+        const link = "http://localhost:8080/api/notifications/find/" + sessionStorage.getItem("user_id");
+        console.log("Link: ", link)
+        axios.get(link)
+            .then(response => {
+                    console.log("length: " + response.data.length);
+                    if(response.data.length > 0){
+                        setHasNotif(true);
+                    }           
+                }
+            )
+            .catch(err => console.log(err));
+    }, [])
 
 
     return (
@@ -21,7 +38,15 @@ export default function Links(props) {
                         <button className="h3 rounded-pill pe-5 links-link text-start border-0" onClick={() => reroute("explore")}>Explore</button>
                         </p>
                         <p className="text-start">
-                        <button className="h3 rounded-pill pe-5 links-link text-start border-0">Notifications</button>
+                        <button className="h3 rounded-pill pe-5 links-link text-start border-0" onClick={() => reroute("notifications")}>
+                            Notifications
+                            {
+                                hasNotif ? 
+                                "  🔴"
+                                :
+                                ""
+                            }
+                        </button>
                         </p>
                         <p className="text-start">
                         <button className="h3 rounded-pill pe-5 links-link text-start border-0">Messages</button>

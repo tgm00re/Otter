@@ -26,12 +26,10 @@ public class Notification {
 	
 	private String message;
 	private Long senderId;
+	private String senderName;
 	private Long recipientId;
 	
-	
-	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name="user_id")
-	private User userWithNotification;
+
 	
 	@Column(updatable = false)
 	@DateTimeFormat(pattern="yyyy-MM-dd")
@@ -53,21 +51,21 @@ public class Notification {
 	
 	public Notification() {}
 
-	public Notification(String message, User userWithNotification, Long senderId, Long recipientId) {
+	public Notification(String message, Long senderId, String senderName, Long recipientId) {
 		super();
 		this.message = message;
-		this.userWithNotification = userWithNotification;	
 		this.senderId = senderId;
 		this.recipientId = recipientId;
+		this.senderName = senderName;
 	}
 
-	public Notification(Long id, String message, User userWithNotification, Long senderId, Long recipientId) {
+	public Notification(Long id, String message, Long senderId, String senderName, Long recipientId) {
 		super();
 		this.id = id;
 		this.message = message;
-		this.userWithNotification = userWithNotification;
 		this.senderId = senderId;
 		this.recipientId = recipientId;
+		this.senderName = senderName;
 	}
 
 	public Long getId() {
@@ -84,15 +82,6 @@ public class Notification {
 
 	public void setMessage(String message) {
 		this.message = message;
-	}
-
-
-	public User getUserWithNotification() {
-		return userWithNotification;
-	}
-
-	public void setUserWithNotification(User userWithNotification) {
-		this.userWithNotification = userWithNotification;
 	}
 
 	public Date getCreated_at() {
@@ -125,6 +114,14 @@ public class Notification {
 
 	public void setRecipientId(Long recipientId) {
 		this.recipientId = recipientId;
+	}
+
+	public String getSenderName() {
+		return senderName;
+	}
+
+	public void setSenderName(String senderName) {
+		this.senderName = senderName;
 	}
 	
 	
