@@ -21,7 +21,6 @@ export default function ExploreMid(props) {
     return (
         <div className="text-start">
             <h1 className="ps-2">Explore</h1>
-            <TweetForm setPosts={setPosts} loggedInUser={props.loggedInUser} posts={posts}/>
             <PostDisplay posts={posts}/>
         </div>
     )

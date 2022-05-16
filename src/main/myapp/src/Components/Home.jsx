@@ -25,7 +25,7 @@ export default function Home(props) {
                         <HomeMid loggedInUser={loggedInUser} />
                     </div>
                     <div className="col-sm-3" id="dashboard-col-right">
-                        <HomeRight />
+                        <HomeRight loggedInUser={loggedInUser}/>
                     </div>
         </>
     )

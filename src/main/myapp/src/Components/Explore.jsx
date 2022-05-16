@@ -28,7 +28,7 @@ export default function Explore() {
                 <ExploreMid loggedInUser={loggedInUser}/>
             </div>
             <div className="col-sm-3" id="dashboard-col-right">
-                <ExploreRight/>
+                <ExploreRight loggedInUser={loggedInUser}/>
             </div>
         </>
     )

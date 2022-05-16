@@ -27,14 +27,19 @@ public class NotificationController {
 	}
 	
 	
-	@GetMapping("/api/notifications/find/{recipientId}")
+	@GetMapping("/api/notifications/find/received/{recipientId}")
 	public List<Notification> findAllByRecipientId(@PathVariable("recipientId") Long recipientId){
-		List<Notification> myList = notificationServ.findAllByRecipientId(recipientId);
 		return notificationServ.findAllByRecipientId(recipientId);
+	}
+	
+	@GetMapping("/api/notifications/find/sent/{senderId}")
+	public List<Notification> findAllBySenderId(@PathVariable("senderId") Long senderId){
+		return notificationServ.findAllBySenderId(senderId);
 	}
 	
 	@DeleteMapping("/api/notifications/delete/{id}")
 	public void deleteById(@PathVariable("id") Long id) {
+		System.out.println("HELLO B)");
 		notificationServ.deleteById(id);
 	}
 	

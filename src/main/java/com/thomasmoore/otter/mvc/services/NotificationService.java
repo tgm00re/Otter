@@ -23,7 +23,10 @@ public class NotificationService {
 	//Read
 	public List<Notification> findAllByRecipientId(Long recipientId){
 		return notificationRepo.findAllByRecipientId(recipientId);
-		
+	}
+	
+	public List<Notification> findAllBySenderId(Long senderId){
+		return notificationRepo.findAllBySenderId(senderId);
 	}
 	
 	//Update

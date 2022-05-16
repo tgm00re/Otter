@@ -71,10 +71,6 @@ export default function EditAccount(props) {
         setProfileImageUrl(base64);
     }
 
-    useEffect(() => {
-        console.log("hello this is edit account silly willy wee B)")
-    })
-
 
     return (
         <>

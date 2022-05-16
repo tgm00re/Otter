@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react'
 import Links from './Links'
-import HomeMid from './HomeMid'
 import HomeRight from './HomeRight';
 import { useHistory } from 'react-router';
 import NotificationsMiddle from './NotificationsMiddle';
@@ -26,7 +25,7 @@ export default function Notifications(props) {
                         <NotificationsMiddle loggedInUser={loggedInUser} />
                     </div>
                     <div className="col-sm-3" id="dashboard-col-right">
-                        <HomeRight />
+                        <HomeRight loggedInUser={loggedInUser}/>
                     </div>
         </>
     )

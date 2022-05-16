@@ -10,4 +10,6 @@ import com.thomasmoore.otter.mvc.models.Notification;
 @Repository
 public interface NotificationRepository extends CrudRepository<Notification, Long>{
 	List<Notification> findAllByRecipientId(Long recipientId);
+	
+	List<Notification> findAllBySenderId(Long senderId);
 }

@@ -12,8 +12,7 @@ export default function Links(props) {
     }
 
     useEffect(() => {
-        console.log("Running");
-        const link = "http://localhost:8080/api/notifications/find/" + sessionStorage.getItem("user_id");
+        const link = "http://localhost:8080/api/notifications/find/received/" + sessionStorage.getItem("user_id");
         console.log("Link: ", link)
         axios.get(link)
             .then(response => {
