@@ -31,7 +31,7 @@ export default function ViewProfile() {
             <UserDisplay id={id}/>
             <ViewUserPosts id={id}/>
         </div>
-        <div className="col-sm-3" id="dashboard-col-right">
+        <div className="col-sm-3 hide-small" id="dashboard-col-right">
             <HomeRight />
         </div>
         

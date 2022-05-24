@@ -24,10 +24,10 @@ export default function Explore() {
             <div className="col-sm-3 vh-100 pt-1" id="dashboard-col-left">
                 <Links loggedInUser={loggedInUser}/>
             </div>
-            <div className="col-sm-6 p-0" style={{borderLeft: "1px solid rgba(245, 248, 250, .25)", borderRight: "1px solid rgba(245, 248, 250, .25)"}}>
+            <div className="col-sm-6 p-0 middle-content" style={{borderLeft: "1px solid rgba(245, 248, 250, .25)", borderRight: "1px solid rgba(245, 248, 250, .25)"}}>
                 <ExploreMid loggedInUser={loggedInUser}/>
             </div>
-            <div className="col-sm-3" id="dashboard-col-right">
+            <div className="col-sm-3 hide-small" id="dashboard-col-right">
                 <ExploreRight loggedInUser={loggedInUser}/>
             </div>
         </>

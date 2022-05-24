@@ -64,8 +64,7 @@ export default function UserDisplay(props) {
                 <img src="https://c4.wallpaperflare.com/wallpaper/55/456/961/4k-galaxy-space-planet-wallpaper-preview.jpg" alt="Profile banner" style={{objectFit:"cover", objectPosition: "center center" ,height: "175px", width: "100%"}}/>
                 <div className="ms-3">
                     <div className="d-flex justify-content-between" style={{height:"50px"}}>
-                        <img src={userToDisplay.profileImageUrl} className="w-25" style={{borderRadius:"50%", width:"100px", height:"100px", position:"relative", top:"-75px"}} />
-                        <span className="h3 mx-3" style={{height:"50px"}}>{userToDisplay.firstName} {userToDisplay.lastName}</span>
+                        <img src={userToDisplay.profileImageUrl} style={{borderRadius:"50%", width:"133px", height:"133px", position:"relative", top:"-90px", border:"3px solid black"}}/>
                         {userToDisplay.userId != sessionStorage.getItem("user_id") ?
                         !friendIds.includes(userToDisplay.userId) ? (
                             <button className="btn rounded-pill bg-light follow-btn justify-self-end"  onClick={e => handleFollow(e.target.value)} value={userToDisplay.userId}>Follow</button>
@@ -77,6 +76,7 @@ export default function UserDisplay(props) {
                         }
                         
                     </div>
+                    <span className="h3 mx-3" style={{height:"50px"}}>{userToDisplay.firstName} {userToDisplay.lastName}</span>
                     <p className="px-3 mt-4">{userToDisplay.biography}</p>
                 </div>
                 <hr />

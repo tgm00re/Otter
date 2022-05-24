@@ -125,7 +125,7 @@ export default function WhoToFollow(props) {
 
 
     return (
-        <div style={{ backgroundColor: "rgba(255,255,255,0.10)" }} className="rounded mt-5 p-1" id="who-to-follow-container">
+        <div style={{ backgroundColor: "rgba(255,255,255,0.10)" }} className="rounded mt-5 px-2 py-3" id="who-to-follow-container">
             <h3 className="bg-transparent">Who to follow</h3>
             <ul className="bg-transparent px-1">
                 {users.map((user, index) => {

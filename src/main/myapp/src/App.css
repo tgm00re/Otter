@@ -10,6 +10,14 @@
   font-weight: bold !important;
 }
 
+html,
+body {
+  position: fixed;
+  overflow-y: auto;
+}
+
+
+
 .App {
   text-align: center;
   height: 100vh;
@@ -248,7 +256,6 @@ input:focus:-ms-input-placeholder {
 
 #second-row{
   height: fit-content !important;
-  background-color: green !important;
 }
 
 #info-list{
@@ -342,6 +349,10 @@ input:focus:-ms-input-placeholder {
   padding: 0;
 }
 
+.links-user-container{
+  width: 100%;
+}
+
 .post{
   text-align: start !important;
   border-bottom: 1px solid #999;
@@ -361,6 +372,11 @@ input:focus:-ms-input-placeholder {
   box-shadow: none;
   color: rgb(245, 248, 250);
 }
+
+#whats-happening-container, #who-to-follow-container{
+  border-radius: 25px !important;
+}
+
 
 #whats-happening-item > ul{
   background-color: transparent !important;
@@ -395,6 +411,12 @@ input:focus:-ms-input-placeholder {
   cursor: pointer;
 }
 
+.link-icon{
+  width: 26px !important;
+  height: 26px !important;
+  object-position: center;
+}
+
 .post-acc-link-txt:hover{
   color: rgb(29, 155, 240);
 }
@@ -419,6 +441,233 @@ input:focus:-ms-input-placeholder {
   color: white !important;
   background-color: #dc3545;
 }
+
+
+/* Set who to follow and what's happening to 100% width? might need to change column width too. O_O ! */
+@media screen and (max-width: 1195px){
+  .link-btn-text{
+    display: none !important;
+  }
+  
+  .container-fluid{
+    padding: 0 !important;
+    margin: 0 !important;
+  }
+
+  nav > .link-container{
+    text-align: center !important;
+  }
+
+  #dashboard-col-left{
+    width: 10% !important;
+  }
+
+  .col-sm-3{
+    width: 25% !important;
+  }
+
+  .post-img{
+    width: 450px;
+  }
+  
+}
+
+
+@media screen and (max-width: 1028px){
+
+  .middle-content{
+    min-width: 400px !important;
+  }
+
+  .post-img{
+    width: 300px !important;
+  }
+
+  #dashboard-icon{
+    display: none;
+  }
+
+  .link-container > .p-2, .link-container > .pe-4{
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+  }
+
+  .link-btn-text{
+    display: none !important;
+  }
+
+  #links-name-display{
+    display: none;
+  }
+
+  #dashboard-col-left{
+    text-align: center !important;
+  }
+
+  .col-sm-6, .col-sm-9{
+    width: 90% !important;
+  }
+  .col-sm-3{
+    width: 10% !important;
+  }
+
+  .hide-small{
+    display: none !important;
+  }
+
+  
+}
+
+@media screen and (max-width: 745px){
+
+  #middle-content{
+    min-width: 0 !important;
+  }
+
+  .profile-img-container-nav{
+    width: 100% !important;
+  }
+
+  #main-container{
+    margin: 0 !important;
+    padding: 0!important;
+    width: 100% !important;
+  }
+
+  .row{
+    padding: 25px 75px;
+    padding-bottom: 75px;
+    padding-top: 75px;
+    width: 100% !important;
+  }
+
+  .col-sm-3{
+    display: none !important;
+  }
+
+  .col-sm-6, .col-sm-9{
+    width: 100% !important;
+    border: none !important;
+  }
+
+  #mobile-bottom-bar{
+    width: 100% !important;
+    height: 75px !important;
+    position: relative;
+    background-color: #0e0e10;
+    position: fixed;
+    padding: 0 !important;
+    margin: 0 !important;
+    bottom: 0;
+    display: flex !important;
+    justify-content: space-around;
+    align-items: center;
+  }
+
+  .bottom-bar-icon:active{
+    border-radius: 50%;
+    box-shadow: 0px 0px 15px white;
+  }
+
+  #bottom-bar-dropup{
+    /* background-color: #0e0e10; */
+    background-color: green;
+    width: 100vw; 
+    border: none;
+  }
+
+  #bottom-bar-profile-img-btn{
+    background: none;
+	  color: inherit;
+	  border: none;
+	  padding: 0;
+	  font: inherit;
+	  cursor: pointer;
+	  outline: inherit;
+  }
+
+  #mobile-nav{
+    display: flex !important;
+    position: fixed;
+    top: 0;
+    height: 75px;
+    width: 100%;
+    z-index: 5;
+  }
+
+  .mobile-nav-item{
+    border-top: 1px grey solid;
+    border-bottom: 1px grey solid;
+  }
+
+  .mobile-nav-item:hover{
+    background-color: rgba(0, 0, 0, .75);
+  }
+
+  /* Login */
+
+  #login-main{
+    display: none;
+  }
+
+  #login-mobile{
+    display: block !important;
+    width: 100vw;
+    height: 100vh;
+  }
+
+
+
+  /* Register */
+  #register-container{
+    display: none;
+  }
+
+  #register-mobile{
+    display:block !important; 
+  }
+
+
+  #register-bg-img{
+    display: none;
+  }
+
+
+
+}
+
+.navbar-light .navbar-toggler-icon{
+  background-image: url("data:image/svg+xml,%3csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 30 30%27%3e%3cpath stroke=%27rgba%28250, 255, 255, 2550%29%27 stroke-linecap=%27round%27 stroke-miterlimit=%2710%27 stroke-width=%272%27 d=%27M4 7h22M4 15h22M4 23h22%27/%3e%3c/svg%3e") !important;
+}
+.navbar-light .navbar-toggler {
+  color: rgba(0,0,0,.55);
+  border-color: rgba(255,255,255,1);
+}
+
+#mobile-nav, #register-mobile, #mobile-bottom-bar, #login-mobile{
+  display: none;
+}
+
+/* @media screen and (max-width: 700px){ 
+
+  #main-container{
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+
+  
+
+  .middle-content, .col-sm-9{
+    width: 100% !important;
+  } 
+
+  
+}
+
+
+.middle-content{
+  min-width: 600px;
+}  */
 
 
 /* Generic */

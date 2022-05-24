@@ -13,7 +13,6 @@ export default function ViewUserPosts(props) {
             console.log(link);
             axios.get(link)
                 .then(response => {
-                    console.log(response.data);
                     setPosts(response.data);
                 })
                 .catch(err => console.log(err.response));
