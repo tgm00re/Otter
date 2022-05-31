@@ -8,17 +8,14 @@ export default function UserDisplay(props) {
     const [friendIds, setFriendIds] = useState([]);
 
     useEffect(() => {
-        console.log(props.id)
         axios.get("http://localhost:8080/api/users/" + props.id)
             .then(response => {
                 if(response.data.biography || response.data.biography == ""){
                     //User was found
-                    console.log("user was found.")
                     setUserToDisplay(response.data)
                     findFriendIds();
                 } else{
                     //User was not found
-                    console.log("user was not found.")
                     history.push("/");
                 }
             })
@@ -30,10 +27,8 @@ export default function UserDisplay(props) {
             firstUserId: sessionStorage.getItem("user_id"),
             secondUserId: secondUserId
         }
-        console.log(addFriendship);
         axios.post("http://localhost:8080/api/friendships/create", addFriendship)
             .then(response => {
-                console.log(response)
                 findFriendIds();
             })
             .catch(error => console.log(error));
@@ -61,7 +56,7 @@ export default function UserDisplay(props) {
     return (
         <>
             <div className="text-start">
-                <img src="https://c4.wallpaperflare.com/wallpaper/55/456/961/4k-galaxy-space-planet-wallpaper-preview.jpg" alt="Profile banner" style={{objectFit:"cover", objectPosition: "center center" ,height: "175px", width: "100%"}}/>
+                <img src="https://c4.wallpaperflare.com/wallpaper/55/456/961/4k-galaxy-space-planet-wallpaper-preview.jpg" alt="Profile banner" id="profile-banner" style={{objectFit:"cover", objectPosition: "center center" ,height: "175px", width: "100%"}}/>
                 <div className="ms-3">
                     <div className="d-flex justify-content-between" style={{height:"50px"}}>
                         <img src={userToDisplay.profileImageUrl} style={{borderRadius:"50%", width:"133px", height:"133px", position:"relative", top:"-90px", border:"3px solid black"}}/>

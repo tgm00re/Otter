@@ -14,6 +14,9 @@ html,
 body {
   position: fixed;
   overflow-y: auto;
+  overflow-x: hidden;
+  width: 100vw !important;
+  background-color: black !important;
 }
 
 
@@ -604,6 +607,16 @@ input:focus:-ms-input-placeholder {
     background-color: rgba(0, 0, 0, .75);
   }
 
+
+  #tweet-submit{
+    margin-top: 15px;
+    margin-right: 15px;
+  }
+
+  #profile-banner{
+    width: 110vw !important;
+  }
+
   /* Login */
 
   #login-main{
@@ -632,6 +645,16 @@ input:focus:-ms-input-placeholder {
     display: none;
   }
 
+  /* Edit Account */
+  #edit-account{
+    display: none;
+  }
+
+  #edit-account-mobile{
+    display: block !important;
+  }
+
+
 
 
 }
@@ -644,7 +667,7 @@ input:focus:-ms-input-placeholder {
   border-color: rgba(255,255,255,1);
 }
 
-#mobile-nav, #register-mobile, #mobile-bottom-bar, #login-mobile{
+#mobile-nav, #register-mobile, #mobile-bottom-bar, #login-mobile, #edit-account-mobile{
   display: none;
 }
 

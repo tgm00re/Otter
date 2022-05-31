@@ -22,19 +22,18 @@ export default function Login(props) {
 
     function handleSubmit(e) {
         e.preventDefault();
-        // console.log("submitting");
         const loginUser = {
             email: email,
             password: password
         }
-        console.log(loginUser);
         axios.post("http://localhost:8080/api/users/login", loginUser)
             .then(response => {
                 if (response.data.userId) {
                     setError("");
-                    //  console.log(response.data);
+                    response.data["id"] = response.data.userId;
                     sessionStorage.setItem("user_id", response.data.userId);
                     sessionStorage.setItem("loggedInUser", JSON.stringify(response.data));
+                    props.getLoggedInUser();
                     history.push("/home");
                 } else {
                     setError("Please check your email/password");

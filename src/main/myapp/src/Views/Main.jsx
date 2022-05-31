@@ -25,13 +25,17 @@ export default function Main() {
     const [loggedInUser, setLoggedInUser] = useState({});
 
     useEffect(() => {
-        if (sessionStorage.getItem("loggedInUser")) {
-            setLoggedInUser(JSON.parse(sessionStorage.getItem("loggedInUser")));
-        }
+        getLoggedInUser();
     }, [])
 
     function reroute(str) {
         history.push("/" + str);
+    }
+
+    function getLoggedInUser(){
+        if (sessionStorage.getItem("loggedInUser")) {
+            setLoggedInUser(JSON.parse(sessionStorage.getItem("loggedInUser")));
+        }
     }
 
 
@@ -47,7 +51,7 @@ export default function Main() {
                 <RegisterFormMobile/>
             </Route>
             <Route exact path="/login">
-                <Login />
+                <Login getLoggedInUser={getLoggedInUser}/>
             </Route>
             <Route exact path="/editAccount">
                 <EditAccount />
@@ -66,16 +70,16 @@ export default function Main() {
                             <li class="nav-item  py-2 mobile-nav-item" style={{cursor:"pointer"}}>
                             <span className="bg-transparent text-light">Bookmarks</span>
                             </li>
-                            <li class="nav-item py-2 mobile-nav-item" style={{cursor:"pointer"}}>
+                            <li class="nav-item py-2 mobile-nav-item" style={{cursor:"pointer"}} >
                                 <span className="bg-transparent text-light">Lists</span>
                             </li>
-                            <li class="nav-item py-2 mobile-nav-item" onClick={() => reroute("account")} style={{cursor:"pointer"}}>
+                            <li class="nav-item py-2 mobile-nav-item" onClick={() => reroute("account")} style={{cursor:"pointer"}} data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                                 <span className="bg-transparent text-light">Profile</span>
                             </li>
                         </ul>
                     </div>
                 </nav>
-                <div className="row px-1">
+                <div className="row w-100 px-1">
                     <Route exact path="/home">
                         <Home />
                     </Route>

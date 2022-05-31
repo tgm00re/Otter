@@ -63,6 +63,23 @@
         	<artifactId>jbcrypt</artifactId>
         	<version>0.4</version>
     	</dependency>
+    	
+    	<!-- Single WAR file  -->
+    	<dependency>
+			<groupId>com.github.eirslett</groupId>
+			<artifactId>frontend-maven-plugin</artifactId>
+			<version>1.6</version>
+		</dependency>
+		
+		<dependency>
+		   <groupId>org.springframework.boot</groupId>
+		   <artifactId>spring-boot-starter-thymeleaf</artifactId>
+		</dependency>
+		
+		<dependency>
+		   <groupId>org.springframework.boot</groupId>
+		   <artifactId>spring-boot-starter-thymeleaf</artifactId>
+		</dependency>
     
 	</dependencies>
 
@@ -72,6 +89,64 @@
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
 			</plugin>
+		<plugin>
+   			<groupId>com.github.eirslett</groupId>
+   			<artifactId>frontend-maven-plugin</artifactId>
+  			<version>1.6</version>
+   			<configuration>
+      			<workingDirectory>src/main/myapp</workingDirectory>
+      			<installDirectory>target</installDirectory>
+   			</configuration>
+   			<executions>
+      			<execution>
+         			<id>install node and npm</id>
+         			<goals>
+            			<goal>install-node-and-npm</goal>
+         			</goals>
+         			<configuration>
+            			<nodeVersion>v16.15.0</nodeVersion>
+            			<npmVersion>8.11.0</npmVersion>
+         			</configuration>
+      			</execution>
+      			<execution>
+         			<id>npm install</id>
+         			<goals>
+            			<goal>npm</goal>
+         			</goals>
+         			<configuration>
+            			<arguments>install</arguments>
+         			</configuration>
+      			</execution>
+      			<execution>
+         			<id>npm run build</id>
+         			<goals>
+           				<goal>npm</goal>
+         			</goals>
+         			<configuration>
+            			<arguments>run build</arguments>
+         			</configuration>
+      			</execution>
+   		   </executions>
+	</plugin>
+	<plugin>
+  		<artifactId>maven-antrun-plugin</artifactId>
+   		<executions>
+      		<execution>
+         		<phase>generate-resources</phase>
+         		<configuration>
+            		<target>
+               			<copy todir="${project.build.directory}/classes/public">
+                  			<fileset dir="${project.basedir}/src/main/myapp"/>
+               			</copy>
+            		</target>
+         		</configuration>
+         		<goals>
+            		<goal>run</goal>
+         		</goals>
+      	</execution>
+  	 </executions>
+	</plugin>
+			
 		</plugins>
 	</build>
 

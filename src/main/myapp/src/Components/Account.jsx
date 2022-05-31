@@ -12,7 +12,6 @@ export default function Account() {
             if(!sessionStorage.getItem("loggedInUser")){
                 history.push("/");
             } else { 
-                console.log(JSON.parse(sessionStorage.getItem("loggedInUser")).biography)
                 setLoggedInUser(JSON.parse(sessionStorage.getItem("loggedInUser")));
             }
     }, [])

@@ -10,9 +10,7 @@ export default function Explore() {
     const [loggedInUser, setLoggedInUser] = useState({})
 
     useEffect(() => {
-        console.log("Runnin");
         if(!sessionStorage.getItem("loggedInUser")){
-            console.log("no loggedinusersilly");
             history.push("/");
         } else { 
             setLoggedInUser(JSON.parse(sessionStorage.getItem("loggedInUser")));

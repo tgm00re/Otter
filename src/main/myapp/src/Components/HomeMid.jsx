@@ -10,7 +10,6 @@ export default function HomeMid(props) {
         let isMounted = true;
         if(isMounted){
             const link = "http://localhost:8080/api/posts/friends/" + sessionStorage.getItem("user_id");
-            console.log(link);
             axios.get(link)
                 .then(response => {
                     console.log(response.data);

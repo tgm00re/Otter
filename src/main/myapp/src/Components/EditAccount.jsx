@@ -18,9 +18,9 @@ export default function EditAccount(props) {
         history.push("/");
     }
 
-    
 
-    function handleSubmit(e){
+
+    function handleSubmit(e) {
         e.preventDefault();
         const editAccountInformation = {
             id: props.loggedInUser.userId,
@@ -31,11 +31,11 @@ export default function EditAccount(props) {
         }
         axios.put("http://localhost:8080/api/users/update", editAccountInformation)
             .then(response => {
-                if(!response.data.email){
-                    if(response.data.firstName){
+                if (!response.data.email) {
+                    if (response.data.firstName) {
                         setFirstNameError(response.data.firstName);
                     }
-                    if(response.data.lastName){
+                    if (response.data.lastName) {
                         setLastNameError(response.data.lastName);
                     }
 
@@ -74,41 +74,67 @@ export default function EditAccount(props) {
 
     return (
         <>
-            <h1>DELETE THIS: <p onClick={logout}>Logout</p></h1>
             <h1 className="h1 mt-1 px-1" style={{ fontSize: "40px" }}>Edit Account Information</h1>
-            <form onSubmit={(e) => handleSubmit(e)} className="text-center d-flex flex-column align-items-center px-2">
+            <div id="edit-account">
+                <form onSubmit={(e) => handleSubmit(e)} className="text-center d-flex flex-column align-items-center px-2">
 
-                            <h4 className="text-start w-100">Edit Name</h4>
-                            <div className="row border-bottom w-100">
-                                <div className="col p-0" >
-                                    <input type="text" className="form-control signup-input" placeholder="First name" value={firstName} onInput={e => setFirstName(e.target.value)} />
-                                    <p className="text-danger bold-font text-start">{firstNameError}</p>
-                                </div>
-                                <div className="col-1"></div>
-                                <div className="col p-0">
-                                    <input type="text" className="form-control signup-input " placeholder="Last name" value={lastName} onInput={e => setLastName(e.target.value)} />
-                                    <p className="text-danger bold-font text-start">{lastNameError}</p>
-                                </div>
-                            </div>
-                            <div className="form-group border-bottom my-3 w-100">
-                                <h4 className="text-start">Edit Profile Image</h4>
-                                <img src={profileImageUrl} className="profile-img-edit my-2" alt="current profile image" />
-                                <div>
-                                <label className="btn btn-primary form-control p-3 rounded-pill w-25" style={{backgroundColor: "rgb(29, 155, 240)", fontWeight:"bold"}}>Upload image
-                                    <input type="file" className="form-control bg-transparent border-0" accept="image/*" onChange={e => uploadImage(e)} hidden/>
-                                </label>  
-                                </div>
-                                <p className="text-danger bold-font text-start">{imageError}</p>
-                            </div>
-                            <div className="form-group border-bottom my-3 w-100">
-                                <h4 className="text-start">Edit Biography {"( " + biography.length + " / 200  )"}</h4>
-                                <textarea placeholder={"Tell us about yourself, " + firstName} className="w-100 bg-transparent border-0" rows="2" id="tweet-form-input" maxLength="200" value={biography} onInput={e => {
-                                    setBiography(e.target.value);
-                                }} />
-                            </div>
-                        
-                <button type="submit" className="btn btn-light rounded-pill register-page-button w-75 p-1 mt-5 mb-3" id="signup-submit-button">Save Changes</button>
-            </form>
+                    <h4 className="text-start w-100">Edit Name</h4>
+                    <div className="row border-bottom w-100">
+                        <div className="col p-0" >
+                            <input type="text" className="form-control signup-input" placeholder="First name" value={firstName} onInput={e => setFirstName(e.target.value)} />
+                            <p className="text-danger bold-font text-start">{firstNameError}</p>
+                        </div>
+                        <div className="col-1"></div>
+                        <div className="col p-0">
+                            <input type="text" className="form-control signup-input " placeholder="Last name" value={lastName} onInput={e => setLastName(e.target.value)} />
+                            <p className="text-danger bold-font text-start">{lastNameError}</p>
+                        </div>
+                    </div>
+                    <div className="form-group border-bottom my-3 w-100">
+                        <h4 className="text-start">Edit Profile Image</h4>
+                        <img src={profileImageUrl} className="profile-img-edit my-2" alt="current profile image" />
+                        <div>
+                            <label className="btn btn-primary form-control p-3 rounded-pill w-25" style={{ backgroundColor: "rgb(29, 155, 240)", fontWeight: "bold" }}>Upload image
+                                <input type="file" className="form-control bg-transparent border-0" accept="image/*" onChange={e => uploadImage(e)} hidden />
+                            </label>
+                        </div>
+                        <p className="text-danger bold-font text-start">{imageError}</p>
+                    </div>
+                    <div className="form-group border-bottom my-3 w-100">
+                        <h4 className="text-start">Edit Biography {"( " + biography.length + " / 200  )"}</h4>
+                        <textarea placeholder={"Tell us about yourself, " + firstName} className="w-100 bg-transparent border-0" rows="2" id="tweet-form-input" maxLength="200" value={biography} onInput={e => {
+                            setBiography(e.target.value);
+                        }} />
+                    </div>
+
+                    <button type="submit" className="btn btn-light rounded-pill register-page-button w-75 p-1 mt-5 mb-3" id="signup-submit-button">Save Changes</button>
+                </form>
+            </div>
+            <div id="edit-account-mobile" className="px-3">
+                <div className="edit-account-separator mb-2 w-100 border-bottom"></div>
+                <form onSubmit={(e) => handleSubmit(e)} className="text-center d-flex flex-column align-items-center px-2">
+                <h4 className="text-start w-100">Edit Name</h4>
+                    <div className="d-flex flex-column justify-content-center w-100 align-items-center">
+                        <input type="text" className="form-control signup-input w-100" placeholder="First name" value={firstName} onInput={e => setFirstName(e.target.value)} />
+                        <p className="text-danger bold-font text-start">{firstNameError}</p>
+                        <input type="text" className="form-control signup-input " placeholder="Last name" value={lastName} onInput={e => setLastName(e.target.value)} />
+                        <p className="text-danger bold-font text-start">{lastNameError}</p>
+                    </div>
+                    <div className="edit-account-separator mb-2 w-100 border-bottom"></div>
+                    <h4 className="text-start w-100">Edit Profile Picture</h4>
+                    <input type="file" className="form-control bg-transparent border-0" accept="image/*" onChange={e => uploadImage(e)} hidden />
+                    <img src={profileImageUrl} className="profile-img-edit" alt="current profile image"/>
+                    <div className="edit-account-separator my-2 w-100 border-bottom"></div>
+                    <h4 className="text-start w-100">Edit Biography {"( " + biography.length + " / 200  )"}</h4>
+                        <textarea placeholder={"Tell us about yourself, " + firstName} className="w-100 bg-transparent border-0" rows="2" id="tweet-form-input" maxLength="200" value={biography} onInput={e => {
+                            setBiography(e.target.value);
+                        }} />
+                    <div className="edit-account-separator my-2 w-100 border-bottom"></div>
+                    <button type="submit" className="btn btn-light rounded-pill register-page-button w-75 p-1 my-2" id="signup-submit-button">Save Changes</button>
+                </form>
+
+            </div>
+
         </>
     )
 }

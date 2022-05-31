@@ -13,15 +13,12 @@ export default function WhoToFollow(props) {
 
     function handleCancelRequest(recipientId) {
         let notifIdToDelete = -1;
-        console.log(sentNotifs);
         for (let i = 0; i < sentNotifs.length; i++) {
             if (sentNotifs[i].recipientId == recipientId) {
-                console.log(sentNotifs[i].recipientId + " == " + recipientId);
                 notifIdToDelete = sentNotifs[i].id;
             }
         }
         if(notifIdToDelete !== -1){
-            console.log("Deleting: ", notifIdToDelete);
         axios.delete("http://localhost:8080/api/notifications/delete/" + notifIdToDelete)
             .then(response => {
                 let newSentNotif = [...sentNotifs];
@@ -35,14 +32,12 @@ export default function WhoToFollow(props) {
 
             })
             .catch(err => {
-                console.log(err.response)
                 let newArr = [...recipientIds];
                 const indexToRemove = newArr.indexOf(recipientId);
                 newArr.splice(indexToRemove, 1);
                 setRecipientIds(newArr);
             })
         } else {
-            console.log("Reached else! :D")
             let newArr = [...recipientIds];
             const indexToRemove = newArr.indexOf(recipientId);
             newArr.splice(indexToRemove, 1);
@@ -53,7 +48,6 @@ export default function WhoToFollow(props) {
 
 
     function handleFollow(secondUserId) {
-        console.log(secondUserId + " <<<<<")
         const notification = {
             message: "Friend Request",
             senderId: sessionStorage.getItem("user_id"),
@@ -63,8 +57,6 @@ export default function WhoToFollow(props) {
         axios.post("http://localhost:8080/api/notifications/create", notification)
             .then(response => {
                 let newSentNotif = [...sentNotifs];
-                console.log("Adding notification: " );
-                console.log(response.data);
                 newSentNotif.push(response.data);
                 setSentNotifs(newSentNotif);
 

@@ -31,7 +31,7 @@ export default function PostDisplay(props) {
                     return 0
                 }).map((post, index) => {
                     return (
-                        <li className="post" key={index}>
+                        <li className="post px-2" key={index}>
                             <Post post={post}/>
                         </li>
                     )

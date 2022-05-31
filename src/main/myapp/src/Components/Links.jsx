@@ -21,10 +21,8 @@ export default function Links(props) {
 
     useEffect(() => {
         const link = "http://localhost:8080/api/notifications/find/received/" + sessionStorage.getItem("user_id");
-        console.log("Link: ", link)
         axios.get(link)
             .then(response => {
-                    console.log("length: " + response.data.length);
                     if(response.data.length > 0){
                         setHasNotif(true);
                     }           

@@ -59,16 +59,16 @@ export default function TweetForm(props) {
     return (
         <div id="tweet-form" className="pb-2">
             <div className="px-1 mt-2 d-flex align-items-start">
-                <p className="profile-img-container">
-                    <img src={props.loggedInUser.profileImageUrl} alt="" className="rounded-circle profile-img"/>
-                </p>
                 <form className="w-100 mx-3" onSubmit={e => handleSubmit(e)}>
+                    <p className="profile-img-container">
+                        <img src={props.loggedInUser.profileImageUrl} alt="" className="rounded-circle profile-img"/>
+                    </p>
                     <div className="text-end">
                         <textarea placeholder="What's happening?" className="w-100 bg-transparent border-0" rows="3" id="tweet-form-input" maxLength="200" value={message} onInput={e => {
                             setMessage(e.target.value);
                         }}/>
                     </div>
-                    <div className="text-center mb-3">
+                    <div className="text-center w-100 mb-3">
                         {imageUrl != "" ?
                             <img className="rounded post-img" src={imageUrl}/>
                         :

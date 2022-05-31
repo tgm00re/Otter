@@ -10,7 +10,6 @@ export default function ViewUserPosts(props) {
         let isMounted = true;
         if(isMounted){
             const link = "http://localhost:8080/api/posts/user/" + props.id;
-            console.log(link);
             axios.get(link)
                 .then(response => {
                     setPosts(response.data);
