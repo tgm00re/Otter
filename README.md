@@ -2,7 +2,7 @@
 Otter social media application - Personal Project
 
 - - - - - - - - - - -
-⚠️ NOTE: THIS PROJECT IS STILL IN DEVELOPMENT AND NOT YET DELPOYED. THERE ARE CURRENTLY FEATURES MISSING AND THE SITE IS NOT YET MOBILE-FRIENDLY AS THIS IS A DESKTOP-FIRST APPLICATION.
+⚠️ NOTE: THIS PROJECT IS STILL IN DEVELOPMENT AND NOT YET DELPOYED. THERE ARE CURRENTLY FEATURES MISSING AND THE SITE IS NOT YET TABLET-FRIENDLY AS THIS IS A DESKTOP/MOBILE-FIRST APPLICATION.
 - - - - - - - - - - -
 WHAT IS OTTER?
 Developing a social media application that allows users to register and login, create ‘posts,’ like posts, comment on posts, become ‘friends’’ with other users, view user profiles, explore different users and posts, send direct messages, and receive notification regarding information related to their account.
