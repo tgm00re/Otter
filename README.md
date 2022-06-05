@@ -40,7 +40,8 @@ This page allows you to change displayed information related to your account (pr
 🔴 PROFILE VIEW:
 
 This page displays a single user's public account information (profile picture, biography, and name) as well as all of the user's posts.
-![Screen Shot 2022-05-11 at 1 49 42 PM](https://user-images.githubusercontent.com/94810636/167914331-a01af13d-097a-4d99-9dcc-0407aec5bd68.png)
+![Screen Shot 2022-06-05 at 12 43 50 PM](https://user-images.githubusercontent.com/94810636/172061159-94d2b6b8-4f88-4c06-a2ae-38a68aada2ad.png)
+
 
 
 
